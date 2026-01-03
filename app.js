@@ -596,30 +596,3 @@
     ACTIVE_PROFILE = getProfile();
     setProfile(ACTIVE_PROFILE);
     if (!localStorage.getItem(LS.week(ACTIVE_PROFILE))) setWeek(ACTIVE_PROFILE, 1);
-
-    // Select listeners
-    $("profileSelect").addEventListener("change", (e) => {
-      ACTIVE_PROFILE = e.target.value;
-      setProfile(ACTIVE_PROFILE);
-      if (!localStorage.getItem(LS.week(ACTIVE_PROFILE))) setWeek(ACTIVE_PROFILE, 1);
-      render();
-    });
-
-    $("weekSelect").addEventListener("change", (e) => {
-      const w = Number(e.target.value || "1");
-      setWeek(ACTIVE_PROFILE, w);
-      render();
-    });
-
-    // Admin buttons
-    initAdminTriggers();
-    $("exitAdminBtn").addEventListener("click", exitAdmin);
-    $("saveJsonBtn").addEventListener("click", saveAdminPlan);
-    $("loadDefaultBtn").addEventListener("click", loadDefaultToEditor);
-    $("copyJsonBtn").addEventListener("click", copyEditor);
-
-    render();
-  }
-
-  document.addEventListener("DOMContentLoaded", init);
-})();
